@@ -1,0 +1,48 @@
+body{
+    	background: linear-gradient(to left ,#efc8ff ,#b0abff );
+   
+}
+#main {
+    text-align: center;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+#center {
+    margin: auto;
+    margin-top: 100px;
+    padding : 100px;
+    display: flex;
+  }
+  #email ,#password {
+      border: none;
+      border-bottom: 0.5px solid rgb(126, 126, 126);
+      
+  }
+  .col-md-4{
+      background: rgb(225, 213, 246);
+      width: 100px;
+      
+  }
+#btn{
+    background-color: #be6ef8;
+    border: none;
+ }
+ /* #message{
+    display: flex;
+     justify-content: space-between ;
+
+    height: 45px;
+}  */
+.form{
+    display: flex;
+    justify-content: center;
+}
+#main1{
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+}
+/* .form-group{
+    display: flex;
+    justify-content: center;
+    
+} */

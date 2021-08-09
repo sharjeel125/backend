@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="app.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="css/roboto-font.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-5/css/fontawesome-all.min.css">
+    
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page-content">
+        <div class="form-v5-content">
+            <form class="form-detail" onSubmit="return false">
+                <h2>Register Account Form</h2>
+                <div class="form-row">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" class="input-text" placeholder="Your Name" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-row">
+                    <label for="youremail">Your Email</label>
+                    <input type="text" id="email" class="input-text" placeholder="Your Email" required
+                    pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="input-text" placeholder="Your Password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="form-row">
+                    <label for="password">Address</label>
+                    <input type="Address" name="Address" id="Address" class="input-text" placeholder="Your Address"
+                    required>
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="form-row">
+                    <label for="Age">Age</label>
+                    <input type="Age" name="Age" id="Age" class="input-text" placeholder="dd/mm/year" required>
+                    <i class="far fa-calendar"></i>
+                </div>
+                <div class="form-row">
+                    <label for="Mobile Number">Mobile Number</label>
+                    <input type="Mobile Number" name="Mobile Number" id="MobileNumber" class="input-text"
+                    placeholder="Your Mobile Number" required>
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="alert alert-dark" role="alert" id="message"></div>
+                <button type="submit" class="btn btn-primary" onClick="onSignup()">Signup</button>
+                <button type="button" class="btn btn-link"><a href="login.html">I HAVE AN ACCOUNT</a></button>
+            </div>
+        </div>
+    </form>
+    
+    
+</body>
+<script src="post.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>
