@@ -1,3 +1,4 @@
+const signuppostmodel = require("../schema")
 
 function send() {
     const title = document.getElementById("title").value
@@ -15,7 +16,7 @@ function send() {
         .then(function (response) {
             console.log(response);
         })
-        alert("Create Successfully")
+    alert("Create Successfully")
         .catch(function (error) {
             // handle error
             console.log(error);
@@ -30,28 +31,38 @@ function onSignup() {
     const Address = document.getElementById("Address").value
     const Age = document.getElementById("Age").value
     const MobileNumber = document.getElementById("MobileNumber").value
-    // const message = document.getElementById("message").value
+    const message = document.getElementById("message")
 
     const obj = {
-        fullname:fullname ,
-        email:email ,
-        password:password ,
-        Address:Address ,
-        Age:Age ,
-        MobileNumber:MobileNumber 
+        fullname: fullname,
+        email: email,
+        password: password,
+        Address: Address,
+        Age: Age,
+        MobileNumber: MobileNumber
     }
     console.log(obj)
 
 
-    axios.post(`http://localhost:5000/signup`, obj)
+    axios.post(`http://localhost:5000/registration`, obj)
         .then(function (response) {
             console.log(response);
-            alert("Signup Successfully")
-            location.href = "login.html";
-        
-        
-            
-        
+            const data = response
+            if (data.data == "Account Created") {
+                message.innerHTML = ("Signup Successfully")
+                setTimeout(() => {
+                    message.innerHTML = ""
+                    location.href = "login.html"
+                }, 2000);
+            }
+            if (data.data == "Email Already exist") { message.innerHTML = ("E-mail use in another account") }
+            setTimeout(() => {
+                message.innerHTML = "";
+            }, 2000);
+
+
+
+
         })
         .catch(function (error) {
             // handle error
@@ -60,6 +71,25 @@ function onSignup() {
 
 }
 
+
+app.post("/login", (request, response) => {
+    try {
+        const body = request.body;
+        signuppostmodel.findOne({ email: body.email }, (error, user) => {
+            if (error) {
+                throw error;
+            }
+            if (user) {
+                response.send(user);
+            }
+            if (!user) {
+                response.send(`Account not found ${body.email}`);
+            }
+        })
+    } catch (error) {
+        response.send(`Got an error `, error.message);
+    }
+})
 
 function read() {
     axios.get(`http://localhost:5000/read`)

@@ -40,21 +40,32 @@ app.post("/add", (request, response) => {
     }
 })
 
-app.post("/signup", (request, response) => {
+app.post("/registration", (request, response) => {
     try {
-        const body = request.body
-        signuppostmodel.create(body, (error, data) => {
+        const body = request.body;
+        signuppostmodel.findOne({ email: body.email }, (error, user) => {
             if (error) {
-                throw error
+                throw error;
+            }
+            if (user) {
+                response.send("Email Already exist")
+
+
             } else {
-                response.send("Create Successfuly")
+                signuppostmodel.create(body, (error, user) => {
+                    if (error) {
+                        response.send(error.message)
+                    } else {
+                        response.send("Account Created")
+
+                    }
+                });
             }
         })
-
     } catch (error) {
-        response.send(error)
+        response.send(`Got an error `, error.message);
     }
-})
+});
 
 
 // Read All
