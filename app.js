@@ -67,6 +67,24 @@ app.post("/registration", (request, response) => {
     }
 });
 
+app.post("/login", (request, response) => {
+    try {   
+        const body = request.body;
+        signuppostmodel.findOne({email: body.email }, (error, user) => {
+            if (error) {
+                throw error;
+            }
+            if (user) {
+                response.send(user);
+            }
+            if (!user) {
+                response.send(`Account not found ${body.email}`);
+            }
+        })
+    } catch (error) {
+        response.send(`Got an error `, error.message);
+    }
+});
 
 // Read All
 app.get("/read", (request, response) => {

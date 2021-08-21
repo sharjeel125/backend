@@ -22,7 +22,11 @@ const signupschema = mongoose.Schema({
     Address: String,
     Age: String,
     MobileNumber: String,
-    created_on: { type: Date, default: Date.now }
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'users'
+    // },
+    created_on: { type: Date, default: Date.now },
 })
 
 

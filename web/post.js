@@ -1,4 +1,6 @@
-const signuppostmodel = require("../schema")
+const BASE_URL = "http://localhost:5000";
+
+
 
 function send() {
     const title = document.getElementById("title").value
@@ -12,7 +14,7 @@ function send() {
     console.log(obj)
 
 
-    axios.post(`http://localhost:5000/add`, obj)
+    axios.post(`${BASE_URL}/add`, obj)
         .then(function (response) {
             console.log(response);
         })
@@ -71,25 +73,100 @@ function onSignup() {
 
 }
 
+function onLogin() {
+    const obj = email
+    axios.post(`${BASE_URL}/login`, obj)
+    .then((response) => {
+        if (response.data.email) {
+            // store user id in storage
+            alert("Go to dashboard")
+        }
+        console.log(response.data);
+    }).catch((error) => {
+        console.log(error);
+    })
+}
 
-app.post("/login", (request, response) => {
-    try {
-        const body = request.body;
-        signuppostmodel.findOne({ email: body.email }, (error, user) => {
-            if (error) {
-                throw error;
-            }
-            if (user) {
-                response.send(user);
-            }
-            if (!user) {
-                response.send(`Account not found ${body.email}`);
-            }
-        })
-    } catch (error) {
-        response.send(`Got an error `, error.message);
-    }
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // post(url,body,headers)
+    // axios.post(`${BASE_URL}/login`, obj)
+    //     .then((response) => {
+    //         if (response.data.email) {
+                // store user id in storage
+                // alert("Go to dashboard")
+            // }
+            // console.log(response.data);
+            // const data = response
+            // if (data.data == "Account found") {
+            //     message.innerHTML = ("Welcome")
+            //     setTimeout(() => {
+            //         message.innerHTML = ""
+            //         location.href = "Dashboard.html"
+            //     }, 2000);
+            // }
+            // if (data.data == "Account not found") {
+            //     message.innerHTML = ("Type Correctly!")
+            //     setTimeout(() => {
+            //         message.innerHTML = ""
+            //         location.href = "Dashboard.html"
+            //     }, 2000);
+            // }
+            
+            
+//         }).catch((error) => {
+//             console.log(error);
+//         })
+// }
+
+
+// app.post("/login", (request, response) => {
+//     try {
+//         const body = request.body;
+//         signuppostmodel.findOne({ email: body.email }, (error, user) => {
+//             if (error) {
+//                 throw error;
+//             }
+//             if (user) {
+//                 response.send(`Account  found ${body.email}`, user)}
+//                 if (data.data == "Account found") {
+//                     message.innerHTML = ("Welcome")
+//                     setTimeout(() => {
+//                         message.innerHTML = ""
+//                         location.href = "Dashboard.html"
+//                     }, 2000)
+//                 }
+//                 if (!user) {
+//                     response.send(`Account not found ${body.email}`)}
+//                     if (data.data == "Account not found") {
+//                         message.innerHTML = ("Type Correctly")
+//                         setTimeout(() => {
+//                             message.innerHTML = ""
+//                             location.href = "login.html"
+//                         }, 2000);
+//                     }
+//                 })
+            
+//               }  catch (error) {
+//             response.send(`Got an error `, error.message);
+
+//         }});
 
 function read() {
     axios.get(`http://localhost:5000/read`)
